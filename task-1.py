@@ -7,7 +7,7 @@ def get_days_from_today(date: str) -> int | None:
     date (str) -- The date representation in "YYYY-MM-DD" format.
 
     Returns:
-    Union[int, None] -- The result of range calculation between two dates.
+    int | None -- The result of range calculation between two dates.
     "None" will be returned in case of incorrect date format.   
     """
     date_parsing_format = '%Y-%m-%d'

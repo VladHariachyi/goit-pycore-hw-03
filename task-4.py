@@ -48,7 +48,6 @@ def get_upcoming_birthdays(users: list[dict[str, str]]) -> list[dict[str, str]]:
         is_date_in_range = birthday_this_year >= today and birthday_this_year <= upcoming_birthday_max_date;
 
         if not is_date_in_range:
-            print(f"User {user} was excluded {upcoming_birthday_max_date}")
             continue;
     
         saturday_weekday_number = 5;
