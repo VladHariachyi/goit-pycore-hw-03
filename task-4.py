@@ -18,7 +18,7 @@ def get_upcoming_birthdays(users: list[dict[str, str]]) -> list[dict[str, str]]:
         have birthday on the weekend will be congratulated on the Monday of the next week. 
     """
     date_format = "%Y.%m.%d"
-    today = datetime.now().date();
+    today = datetime.now().date()
     upcoming_birthdays = []
 
     for user in users:
@@ -31,32 +31,27 @@ def get_upcoming_birthdays(users: list[dict[str, str]]) -> list[dict[str, str]]:
         birthday_this_year = datetime(year=today.year, month=user_birthday.month, day=user_birthday.day).date()
 
         if birthday_this_year < today:
-            next_year_birthday_date = datetime(
-                year=birthday_this_year.year + 1,
-                month=birthday_this_year.month, 
-                day=birthday_this_year.day
-            ).date()
-            
+            next_year_birthday_date = birthday_this_year.replace(year=birthday_this_year.year + 1)
             upcoming_birthdays.append({
                 "name": user["name"],
                 "congratulation_date": datetime.strftime(next_year_birthday_date, date_format)
             })
 
-            continue;
+            continue
         
         upcoming_birthday_max_date = today + timedelta(days=6)
-        is_date_in_range = birthday_this_year >= today and birthday_this_year <= upcoming_birthday_max_date;
+        is_date_in_range = birthday_this_year >= today and birthday_this_year <= upcoming_birthday_max_date
 
         if not is_date_in_range:
-            continue;
+            continue
     
-        saturday_weekday_number = 5;
-        sunday_weekday_number = 6;
+        saturday_weekday_number = 5
+        sunday_weekday_number = 6
         is_birthday_on_weekend = birthday_this_year.weekday() in [saturday_weekday_number, sunday_weekday_number]
         congratulation_date = None
 
         if is_birthday_on_weekend:
-            week_days_amount = 7;
+            week_days_amount = 7
             amount_days_to_shift = week_days_amount - birthday_this_year.weekday()
             congratulation_date = birthday_this_year + timedelta(days=amount_days_to_shift)
         else:
@@ -67,13 +62,13 @@ def get_upcoming_birthdays(users: list[dict[str, str]]) -> list[dict[str, str]]:
             "congratulation_date": datetime.strftime(congratulation_date, date_format)
         })
     
-    return upcoming_birthdays;
+    return upcoming_birthdays
 
 
 
 users = [
     { "name": "John Doe", "birthday": "1980.04.22"},    # already celebrated
-    { "name": "Lisa Doe", "birthday": "1980.04.25"},    # on this week but on weekend
+    { "name": "Lisa Doe", "birthday": "1980.04.26"},    # on this week but on weekend
     { "name": "Marcus Doe", "birthday": "1980.04.28"},  # on this week
     { "name": "Peter Doe", "birthday": "1980.05.15"},   # in future, outside of 7 days range
 ]

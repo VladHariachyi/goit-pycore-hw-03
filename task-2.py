@@ -15,15 +15,15 @@ def get_numbers_ticket(min: int, max: int, quantity: int) -> list[int]:
     -- "max" greater than 1000;
     -- "quantity" less than 1 or greater than max availalble numbers in range;
     """
-    is_range_valid = min >= 1 and (max >= min and max <= 1000); 
-    available_quantity_amount = (max - min) + 1;
-    is_quantity_in_ranage = quantity >= 0 and quantity <= available_quantity_amount;
+    is_range_valid = min >= 1 and (max >= min and max <= 1000)
+    available_quantity_amount = (max - min) + 1
+    is_quantity_in_ranage = quantity >= 0 and quantity <= available_quantity_amount
 
     if not is_range_valid or not is_quantity_in_ranage:
-        return [];
+        return []
 
 
-    return sample(range(min, max + 1), quantity);
+    return sample(range(min, max + 1), quantity)
 
 
 print(f"The lottery numbers are: {get_numbers_ticket(1, 49, 6)}")

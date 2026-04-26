@@ -16,11 +16,10 @@ def get_days_from_today(date: str) -> int | None:
 
     try:
         requested_date = datetime.strptime(date, date_parsing_format)
+        return (today - requested_date).days
     except ValueError:
-        print('Incorrect date format, please check your input')     
-
-    
-    return None if requested_date is None else (today - requested_date).days
+        print('Incorrect date format, please check your input')   
+        return None  
 
 
 days_diff_1 = get_days_from_today('2026-04-15')
