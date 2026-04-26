@@ -1,4 +1,4 @@
-import re;
+import re
 
 def normalize_phone(phone_number: str) -> str:
     """Refactros the phone number format.
@@ -9,11 +9,11 @@ def normalize_phone(phone_number: str) -> str:
     Returns:
     str -- The formatted phone number.
     """
-    country_code = "+380";
+    country_code = "+380"
     cleaned_phone_number = re.sub(r"\D", "", phone_number)
     phone_number_with_country_code = re.sub(r"380|^0", country_code, cleaned_phone_number)
 
-    return phone_number_with_country_code;
+    return phone_number_with_country_code
 
 
 raw_numbers = [

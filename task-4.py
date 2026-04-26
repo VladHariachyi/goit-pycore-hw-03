@@ -1,4 +1,4 @@
-from datetime import datetime, timedelta;
+from datetime import datetime, timedelta
 
 def get_upcoming_birthdays(users: list[dict[str, str]]) -> list[dict[str, str]]:
     """Generates a list of upcoming birthdays for 7 days in advance including today.
